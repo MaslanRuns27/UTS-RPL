@@ -1,0 +1,42 @@
+🧩 1️⃣ Maintainability (Kemudahan Pemeliharaan)
+💡 Penilaian
+Komponen | Evaluasi |Skor (1–5)
+Dependency Injection	| Sangat memudahkan pemeliharaan karena dependensi (seperti Database) dapat diganti tanpa mengubah logika utama.	| ⭐⭐⭐⭐⭐
+Factory Method	| Memudahkan penambahan tipe produk baru tanpa mengubah kode existing.	| ⭐⭐⭐⭐
+Builder Pattern	| Proses checkout lebih mudah dikelola dan dimodifikasi (misalnya menambah fitur diskon atau voucher).	| ⭐⭐⭐⭐
+Singleton Database	| Mudah dikontrol, tapi butuh perhatian agar tidak disalahgunakan (terlalu tergantung).	| ⭐⭐⭐
+
+2️⃣ Reusability (Kemampuan Kode untuk Digunakan Ulang)
+💡 Penilaian
+Komponen	| Evaluasi	| Skor
+ProdukFactory	| Dapat digunakan kembali untuk berbagai jenis produk (fisik, digital, bundle).	| ⭐⭐⭐⭐⭐
+PesananBuilder	|  Reusable untuk proses pembuatan berbagai jenis pesanan (checkout normal, pre-order, custom order).	| ⭐⭐⭐⭐
+Database Singleton	| Kurang reusable jika sistem diperluas ke multi-database (karena fixed connection).	| ⭐⭐⭐
+Service Layer | (ProdukService, PesananService)	Tingkat reuse tinggi antar modul (admin, penjual, pembeli).	| ⭐⭐⭐⭐
+
+3️⃣ Scalability (Kemampuan Sistem untuk Berkembang)
+💡 Penilaian
+Komponen	| Evaluasi	| Skor
+Dependency Injection	| Menjadikan sistem modular dan mudah di-scale (bisa ganti dependency seperti database, cache, dsb).	| ⭐⭐⭐⭐⭐
+Factory Method	| Skalabilitas tinggi untuk penambahan tipe produk baru tanpa ubah core system.	| ⭐⭐⭐⭐
+Builder Pattern	| Mudah diperluas dengan langkah tambahan (misalnya pengiriman, voucher, asuransi).	| ⭐⭐⭐⭐
+Singleton Database	| Menjadi bottleneck bila tidak didesain untuk connection pooling.	| ⭐⭐⭐
+
+Evaluasi Umum
+
+✅ Kelebihan:
+
+1. Struktur modular & clean architecture.
+2. Pola desain creational meningkatkan fleksibilitas dan keterpisahan komponen.
+3. Dependency Injection memperkuat maintainability & testability.
+
+⚠️ Kekurangan:
+
+1. Singleton dapat menjadi bottleneck pada sistem berskala besar.
+2. Belum semua class terpisah lewat interface (sehingga testing belum sepenuhnya bebas dependensi).
+
+💡 Rekomendasi Perbaikan:
+
+1. Gunakan interface (misal DatabaseInterface, RepositoryInterface) untuk mendukung mocking & unit testing.
+2. Implementasikan connection pool untuk database agar scalable.
+3. Gunakan service container / IoC container (misal Laravel Service Container) untuk mengelola Dependency Injection otomatis.
